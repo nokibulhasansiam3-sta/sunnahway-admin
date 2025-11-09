@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { messaging } from '@/lib/firebase-admin';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   // Handle CORS for API routes
   const headers = {

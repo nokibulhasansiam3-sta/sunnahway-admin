@@ -1,30 +1,26 @@
 import admin from 'firebase-admin';
 
+// Initialize Firebase Admin only if credentials are available
 if (!admin.apps.length) {
-  try {
-    // For Vercel deployment, use environment variables
-    if (process.env.FIREBASE_PRIVATE_KEY) {
+  const projectId = process.env.FIREBASE_PROJECT_ID;
+  const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
+  const privateKey = process.env.FIREBASE_PRIVATE_KEY;
+
+  if (projectId && clientEmail && privateKey) {
+    try {
       admin.initializeApp({
         credential: admin.credential.cert({
-          projectId: process.env.FIREBASE_PROJECT_ID || 'sunnahway-2024',
-          clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-          privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+          projectId,
+          clientEmail,
+          privateKey: privateKey.replace(/\\n/g, '\n'),
         }),
       });
-    } else {
-      // For local development, try service account file
-      try {
-        const serviceAccount = require('../serviceAccountKey.json');
-        admin.initializeApp({
-          credential: admin.credential.cert(serviceAccount),
-        });
-      } catch (fileError) {
-        // Dummy initialization for build - add env vars in Vercel
-        console.warn('No Firebase credentials found. Add environment variables in Vercel.');
-      }
+      console.log('✅ Firebase Admin initialized successfully');
+    } catch (error) {
+      console.error('❌ Firebase Admin initialization error:', error);
     }
-  } catch (error) {
-    console.error('Firebase Admin initialization error:', error);
+  } else {
+    console.warn('⚠️ Firebase credentials not found. Add environment variables in Vercel.');
   }
 }
 
