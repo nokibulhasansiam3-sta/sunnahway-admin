@@ -6,12 +6,6 @@
   "regions": ["sin1"],
   "env": {
     "NODE_ENV": "production"
-  },
-  "crons": [
-    {
-      "path": "/api/cron/check-scheduled",
-      "schedule": "0 9 * * *"
-    }
-  ]
+  }
 }
 
