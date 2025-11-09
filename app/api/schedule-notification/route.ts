@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
+    // Lazy load Firebase Admin
+    const { db } = await import('@/lib/firebase-admin');
+    
     const notification = await request.json();
 
     // Save to Firestore

@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db, messaging } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 export async function GET(request: NextRequest) {
   try {
+    // Lazy load Firebase Admin
+    const { db, messaging } = await import('@/lib/firebase-admin');
+    
     console.log('🔍 Cron job: Checking scheduled notifications...');
 
     // Get all scheduled notifications from Firestore

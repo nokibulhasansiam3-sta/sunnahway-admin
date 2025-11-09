@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
-import { auth, db } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
+    // Lazy load Firebase Admin to avoid build-time errors
+    const { auth, db } = await import('@/lib/firebase-admin');
+    
     // Get total users
     const listUsersResult = await auth.listUsers();
     const totalUsers = listUsersResult.users.length;

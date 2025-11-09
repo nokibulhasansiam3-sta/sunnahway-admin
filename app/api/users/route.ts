@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
-import { auth, db } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
+    // Lazy load Firebase Admin
+    const { auth, db } = await import('@/lib/firebase-admin');
+    
     // Get all users from Firebase Auth
     const listUsersResult = await auth.listUsers();
     const users = listUsersResult.users.map((user) => ({
