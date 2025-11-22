@@ -604,6 +604,12 @@
                     }
                 };
 
+                // Show Loading State
+                const sendBtn = document.querySelector('#notifForm button[type="submit"]');
+                const originalBtnText = sendBtn.innerHTML;
+                sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+                sendBtn.disabled = true;
+
                 try {
                     // Use our own Vercel API Proxy to bypass CORS
                     const res = await fetch('/api/send', {
@@ -619,11 +625,11 @@
 
                     const data = await res.json();
 
-                    if (data.success || data.message_id) {
+                    if (res.ok && (data.success || data.message_id)) {
                         Swal.fire({
                             icon: 'success',
                             title: 'Sent Successfully',
-                            text: 'Notification pushed via FCM!',
+                            text: 'Notification has been pushed to all users!',
                             confirmButtonColor: '#2E3192'
                         });
 
@@ -641,11 +647,16 @@
                         updatePreview();
 
                     } else {
-                        Swal.fire('Error', 'Failed to send: ' + (data.error || data.results ? data.results[0].error : 'Unknown error'), 'error');
+                        console.error('FCM Error Response:', data);
+                        Swal.fire('Error', 'Failed to send: ' + (data.error || (data.results && data.results[0] ? data.results[0].error : 'Unknown error')), 'error');
                     }
                 } catch (error) {
-                    console.error(error);
+                    console.error('Network/Script Error:', error);
                     Swal.fire('Error', 'Failed to send notification: ' + error.message, 'error');
+                } finally {
+                    // Restore Button State
+                    sendBtn.innerHTML = originalBtnText;
+                    sendBtn.disabled = false;
                 }
             });
 
