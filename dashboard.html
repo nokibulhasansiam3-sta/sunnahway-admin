@@ -13,14 +13,18 @@
             --sidebar-bg: #1a1c2e;
             --active-color: #2E3192;
             --text-color: #e2e8f0;
+            --mobile-nav-height: 70px;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f1f5f9;
             overflow-x: hidden;
+            padding-bottom: var(--mobile-nav-height);
+            /* Space for bottom nav */
         }
 
+        /* Desktop Sidebar */
         .sidebar {
             height: 100vh;
             background: var(--sidebar-bg);
@@ -30,6 +34,7 @@
             padding-top: 30px;
             transition: 0.3s;
             z-index: 1000;
+            display: block;
         }
 
         .sidebar-brand {
@@ -62,6 +67,75 @@
         .content {
             margin-left: 260px;
             padding: 40px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Bottom Nav */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            justify-content: space-around;
+            padding: 10px 0;
+            height: var(--mobile-nav-height);
+        }
+
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .bottom-nav-item i {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+
+        .bottom-nav-item.active {
+            color: var(--active-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+                /* Hide sidebar on mobile */
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 20px;
+                padding-bottom: 80px;
+            }
+
+            .bottom-nav {
+                display: flex;
+                /* Show bottom nav on mobile */
+            }
+
+            .header-card {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .header-card .d-flex {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .module-card {
+                padding: 20px;
+            }
         }
 
         .header-card {
@@ -316,6 +390,30 @@
 
     </div>
 
+    <!-- Bottom Navigation for Mobile -->
+    <div class="bottom-nav">
+        <a href="#" onclick="showModule('notifications')" class="bottom-nav-item active">
+            <i class="bi bi-bell"></i>
+            <span>Notif</span>
+        </a>
+        <a href="#" onclick="showModule('stories')" class="bottom-nav-item">
+            <i class="bi bi-book"></i>
+            <span>Stories</span>
+        </a>
+        <a href="#" onclick="showModule('articles')" class="bottom-nav-item">
+            <i class="bi bi-file-text"></i>
+            <span>Articles</span>
+        </a>
+        <a href="#" onclick="showModule('quiz')" class="bottom-nav-item">
+            <i class="bi bi-question-circle"></i>
+            <span>Quiz</span>
+        </a>
+        <a href="#" onclick="logout()" class="bottom-nav-item text-danger">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Auth Check - DISABLED for direct access
@@ -334,10 +432,14 @@
 
             // Update Sidebar
             document.querySelectorAll('.sidebar a').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active')); // Update bottom nav
+
             // Find the link that called this function (approximate)
-            const links = document.querySelectorAll('.sidebar a');
+            const links = document.querySelectorAll('.sidebar a, .bottom-nav-item');
             links.forEach(link => {
-                if (link.getAttribute('onclick').includes(id)) link.classList.add('active');
+                if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(id)) {
+                    link.classList.add('active');
+                }
             });
 
             // Update Header Title
