@@ -1391,23 +1391,12 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            try {
-                const res = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-                const data = await res.json();
-
-                if (data.success) {
-                    localStorage.setItem('adminToken', data.token);
-                    window.location.href = '/dashboard.html';
-                } else {
-                    alert('ভুল ইউজারনেম বা পাসওয়ার্ড');
-                }
-            } catch (err) {
-                console.error(err);
-                alert('লগইন ব্যর্থ হয়েছে');
+            // Simple authentication (for demo purposes)
+            if (username === 'admin' && password === 'sunnahway2024') {
+                localStorage.setItem('adminToken', 'authenticated');
+                window.location.href = '/dashboard.html';
+            } else {
+                alert('ভুল ইউজারনেম বা পাসওয়ার্ড\n\nDefault Credentials:\nUsername: admin\nPassword: sunnahway2024');
             }
         });
 
