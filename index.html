@@ -1391,12 +1391,18 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
+            console.log('Login attempt:', username); // Debug
+
             // Simple authentication (for demo purposes)
             if (username === 'admin' && password === 'sunnahway2024') {
+                console.log('Login successful!'); // Debug
                 localStorage.setItem('adminToken', 'authenticated');
-                window.location.href = '/dashboard.html';
+                alert('Login successful! Redirecting to dashboard...');
+                setTimeout(() => {
+                    window.location.href = '/dashboard.html';
+                }, 500);
             } else {
-                alert('ভুল ইউজারনেম বা পাসওয়ার্ড\n\nDefault Credentials:\nUsername: admin\nPassword: sunnahway2024');
+                alert('ভুল ইউজারনেম বা পাসওয়ার্ড\n\n✅ Correct Credentials:\n👤 Username: admin\n🔑 Password: sunnahway2024');
             }
         });
 
