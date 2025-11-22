@@ -605,13 +605,16 @@
                 };
 
                 try {
-                    const res = await fetch('https://fcm.googleapis.com/fcm/send', {
+                    // Use our own Vercel API Proxy to bypass CORS
+                    const res = await fetch('/api/send', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `key=${serverKey}`
+                            'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(payload)
+                        body: JSON.stringify({
+                            serverKey: serverKey,
+                            payload: payload
+                        })
                     });
 
                     const data = await res.json();
