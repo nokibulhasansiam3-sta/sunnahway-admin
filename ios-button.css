@@ -1,0 +1,47 @@
+/* iOS Download Button */
+.btn-download-ios {
+    position: relative;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.btn-download-ios:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    color: white;
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+}
+
+/* Download Buttons Container */
+.download-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+    .btn-download,
+    .btn-download-ios {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .download-buttons {
+        width: 100%;
+    }
+}
