@@ -1,0 +1,24 @@
+{
+    "name": "সুন্নাহওয়ে - Sunnahway",
+    "short_name": "সুন্নাহওয়ে",
+    "description": "আপনার ডিজিটাল ইসলামিক সঙ্গী",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#3D9952",
+    "theme_color": "#3D9952",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

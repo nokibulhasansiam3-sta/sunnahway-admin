@@ -8,6 +8,15 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>সুন্নাহওয়ে - আপনার ডিজিটাল ইসলামিক সঙ্গী</title>
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="সুন্নাহওয়ে">
+    <link rel="apple-touch-icon" href="/logo.png">
+    <meta name="theme-color" content="#3D9952">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -628,10 +637,8 @@
                             <a href="/sunnahway.apk" class="btn-download" download="sunnahway.apk">
                                 <i class="bi bi-android2"></i> Android ডাউনলোড
                             </a>
-                            <a href="#" class="btn-download"
-                                onclick="alert('iOS version শীঘ্রই আসছে! 🍎\n\nএখনের জন্য Android version ব্যবহার করুন।'); return false;"
-                                style="opacity: 0.7;">
-                                <i class="bi bi-apple"></i> iOS (শীঘ্রই)
+                            <a href="#" class="btn-download" onclick="showIOSInstructions(); return false;">
+                                <i class="bi bi-apple"></i> iOS Install করুন
                             </a>
                         </div>
                     </div>
@@ -1403,6 +1410,38 @@
                 }
             });
         });
+
+        // iOS Installation Instructions
+        function showIOSInstructions() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+            if (isIOS && isSafari) {
+                alert('📱 iOS এ Install করুন:\n\n' +
+                    '১. নিচের Share বাটনে ট্যাপ করুন 📤\n' +
+                    '২. "Add to Home Screen" সিলেক্ট করুন ➕\n' +
+                    '৩. "Add" বাটনে ট্যাপ করুন ✅\n\n' +
+                    'এরপর Home Screen থেকে অ্যাপটি খুলুন!');
+            } else if (isIOS) {
+                alert('⚠️ Safari Browser ব্যবহার করুন\n\n' +
+                    'iOS এ install করতে Safari browser ব্যবহার করুন।\n\n' +
+                    'এই লিংকটি Safari এ খুলুন:\n' +
+                    window.location.href);
+            } else {
+                alert('📱 iOS Device প্রয়োজন\n\n' +
+                    'এই feature শুধুমাত্র iPhone/iPad এর জন্য।\n\n' +
+                    'Android এর জন্য উপরের Android Download বাটন ব্যবহার করুন।');
+            }
+        }
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed'));
+            });
+        }
     </script>
 </body>
 
