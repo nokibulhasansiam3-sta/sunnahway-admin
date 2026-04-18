@@ -10,7 +10,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -21,7 +21,7 @@
         fontFamily: {
           sans:   ['Hind Siliguri','Inter','sans-serif'],
           latin:  ['Inter','sans-serif'],
-          arabic: ['Amiri','serif'],
+          arabic: ['Scheherazade New','Amiri','serif'],
         },
         colors: {
           brand: {
@@ -30,7 +30,7 @@
             800:'#05603A',900:'#054F31',950:'#052E1C',
           },
           gold: {
-            300:'#FCD34D',400:'#FBBF24',500:'#F59E0B',600:'#D97706',
+            300:'#FCD34D',400:'#FBBF24',500:'#F59E0B',600:'#D97706',700:'#B45309',
           },
         },
       },
@@ -40,49 +40,171 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Hind Siliguri','Inter',sans-serif;
+  body { font-family: 'Hind Siliguri','Inter',sans-serif; }
+
+  /* ─── Islamic geometric pattern (contained to sections) ─── */
+  .pattern-geo {
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23039855' stroke-width='0.6' opacity='0.12'><path d='M40 0L50 30H80L55 50L65 80L40 60L15 80L25 50L0 30H30Z'/><circle cx='40' cy='40' r='10'/></g></svg>");
+    background-size: 80px 80px;
   }
-  .glass {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(226,232,240,0.8);
+  .dark .pattern-geo {
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%2332D583' stroke-width='0.6' opacity='0.18'><path d='M40 0L50 30H80L55 50L65 80L40 60L15 80L25 50L0 30H30Z'/><circle cx='40' cy='40' r='10'/></g></svg>");
   }
-  .dark .glass {
-    background: rgba(14,26,20,0.65);
-    border-color: rgba(108,233,166,0.10);
-  }
+
+  /* ─── Gradient text ─── */
   .grad-text {
-    background: linear-gradient(135deg,#039855 0%,#12B76A 50%,#05603A 100%);
+    background: linear-gradient(135deg,#039855 0%,#12B76A 40%,#F59E0B 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .dark .grad-text {
-    background: linear-gradient(135deg,#6CE9A6 0%,#32D583 50%,#12B76A 100%);
+    background: linear-gradient(135deg,#6CE9A6 0%,#32D583 40%,#FCD34D 100%);
     -webkit-background-clip: text;
     background-clip: text;
   }
+  .grad-gold {
+    background: linear-gradient(135deg,#FCD34D 0%,#F59E0B 60%,#B45309 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ─── Glass surface ─── */
+  .glass {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(226,232,240,0.7);
+  }
+  .dark .glass {
+    background: rgba(14,26,20,0.65);
+    border-color: rgba(108,233,166,0.10);
+  }
+
+  /* ─── Card hover ─── */
   .card-lift {
-    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1),
+                box-shadow .35s,
+                border-color .35s;
   }
   .card-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 40px -16px rgba(3,152,85,0.3);
-    border-color: rgba(18,183,106,0.4);
+    box-shadow: 0 20px 45px -18px rgba(3,152,85,0.28);
+    border-color: rgba(18,183,106,0.35);
   }
+
+  /* ─── Gradient ring border ─── */
+  .ring-grad {
+    background:
+      linear-gradient(#fff,#fff) padding-box,
+      linear-gradient(135deg,#12B76A,#F59E0B) border-box;
+    border: 1.5px solid transparent;
+  }
+  .dark .ring-grad {
+    background:
+      linear-gradient(#0E1A14,#0E1A14) padding-box,
+      linear-gradient(135deg,#32D583,#FCD34D) border-box;
+  }
+
+  /* ─── Group header accent bar ─── */
   .group-head {
     position: relative;
-    padding-left: 14px;
+    padding-left: 16px;
   }
   .group-head::before {
     content:'';
     position: absolute;
-    left: 0; top: 8px; bottom: 8px;
-    width: 4px;
+    left: 0; top: 6px; bottom: 6px;
+    width: 5px;
     border-radius: 4px;
     background: linear-gradient(180deg,#12B76A,#054F31);
+  }
+
+  /* ─── Mihrab / arch card for Arabic hero verse ─── */
+  .mihrab {
+    position: relative;
+    border-radius: 160px 160px 28px 28px;
+    background:
+      radial-gradient(ellipse at top, rgba(252,211,77,0.18), transparent 60%),
+      linear-gradient(180deg, #ECFDF4 0%, #FFFFFF 100%);
+    border: 1px solid rgba(3,152,85,0.18);
+    box-shadow:
+      0 30px 60px -24px rgba(3,152,85,0.25),
+      inset 0 0 0 1px rgba(245,158,11,0.1);
+  }
+  .dark .mihrab {
+    background:
+      radial-gradient(ellipse at top, rgba(252,211,77,0.15), transparent 60%),
+      linear-gradient(180deg, #0E1A14 0%, #061009 100%);
+    border-color: rgba(108,233,166,0.2);
+    box-shadow:
+      0 30px 60px -24px rgba(3,152,85,0.35),
+      inset 0 0 0 1px rgba(245,158,11,0.08);
+  }
+  .mihrab::before {
+    content:'';
+    position: absolute;
+    inset: 8px;
+    border-radius: 152px 152px 22px 22px;
+    border: 1px dashed rgba(3,152,85,0.2);
+    pointer-events: none;
+  }
+  .dark .mihrab::before {
+    border-color: rgba(108,233,166,0.2);
+  }
+
+  /* ─── Decorative divider ornament ─── */
+  .divider-orn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .divider-orn::before, .divider-orn::after {
+    content:''; flex:1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(3,152,85,.4), transparent);
+  }
+  .dark .divider-orn::before, .dark .divider-orn::after {
+    background: linear-gradient(90deg, transparent, rgba(108,233,166,.35), transparent);
+  }
+
+  /* ─── Number badge (subtle 3D) ─── */
+  .num-badge {
+    background: linear-gradient(180deg,#12B76A 0%,#054F31 100%);
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,.3),
+      inset 0 -6px 10px rgba(0,0,0,.2),
+      0 10px 20px -8px rgba(3,152,85,.45);
+    color:#fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  }
+
+  /* ─── Icon tile gradient ─── */
+  .icon-tile {
+    background: linear-gradient(135deg, #D1FADF, #A6F4C5);
+    border: 1px solid rgba(18,183,106,0.18);
+  }
+  .dark .icon-tile {
+    background: linear-gradient(135deg, rgba(50,213,131,0.15), rgba(5,96,58,0.35));
+    border-color: rgba(108,233,166,0.25);
+  }
+
+  /* ─── Button (primary) with subtle inner highlight ─── */
+  .btn-primary {
+    background: linear-gradient(180deg,#12B76A 0%,#027A48 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.3),
+      0 14px 30px -10px rgba(3,152,85,.5);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(180deg,#16C673 0%,#039855 100%);
+  }
+
+  /* ─── Lantern SVG styling (decorative) ─── */
+  .lantern {
+    filter: drop-shadow(0 8px 14px rgba(245,158,11,.35));
   }
 </style>
 </head>
@@ -90,7 +212,7 @@
 <body class="bg-[#F7FBF8] text-slate-800 dark:bg-[#0A130E] dark:text-slate-100">
 
 <!-- ═════════════════ NAVBAR ═════════════════ -->
-<header class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-[#0A130E]/80 border-b border-slate-200/70 dark:border-white/5">
+<header class="sticky top-0 z-50 backdrop-blur-lg bg-white/85 dark:bg-[#0A130E]/85 border-b border-slate-200/70 dark:border-white/5">
   <nav class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
       <img src="logo.png" alt="Sunnahway" class="w-10 h-10 rounded-xl" />
@@ -100,109 +222,177 @@
       </div>
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
-      <a href="/"          class="text-brand-700 dark:text-brand-300">হোম</a>
-      <a href="/about"     class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">আমাদের সম্পর্কে</a>
-      <a href="/blog"      class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">ব্লগ</a>
-      <a href="/contact"   class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">যোগাযোগ</a>
+      <a href="/"         class="text-brand-700 dark:text-brand-300">হোম</a>
+      <a href="/about"    class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">আমাদের সম্পর্কে</a>
+      <a href="/blog"     class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">ব্লগ</a>
+      <a href="/contact"  class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">যোগাযোগ</a>
     </div>
     <div class="flex items-center gap-2">
       <button id="themeBtn" class="w-10 h-10 rounded-full border border-slate-200 dark:border-white/10 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/5 transition" aria-label="Toggle theme">
         <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z" /></svg>
         <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
       </button>
-      <a href="sunnahway.apk" download class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold transition">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" /></svg>
+      <a href="sunnahway.apk" download class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-primary text-white text-sm font-bold transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
         ডাউনলোড
       </a>
     </div>
   </nav>
 </header>
 
-<!-- ═════════════════ HERO (clean, no orbs) ═════════════════ -->
-<section id="top" class="relative max-w-6xl mx-auto px-5 pt-20 pb-16 md:pt-28 md:pb-24">
-  <div class="text-center max-w-3xl mx-auto">
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-[0.2em] border border-brand-100 dark:border-brand-800/40">
-      বিজ্ঞাপনমুক্ত · ফ্রি চিরকাল
+<!-- ═════════════════ HERO / BANNER ═════════════════ -->
+<section id="top" class="relative overflow-hidden">
+  <!-- Section-contained pattern (NOT floating, part of hero) -->
+  <div aria-hidden="true" class="absolute inset-0 pattern-geo opacity-70 pointer-events-none"
+       style="mask-image: radial-gradient(ellipse at center, black 0%, black 45%, transparent 75%);
+              -webkit-mask-image: radial-gradient(ellipse at center, black 0%, black 45%, transparent 75%);"></div>
+  <!-- Soft hero gradient wash -->
+  <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-brand-50/60 via-transparent to-transparent dark:from-brand-950/40"></div>
+
+  <div class="relative max-w-6xl mx-auto px-5 pt-16 md:pt-24 pb-20 md:pb-28">
+    <div class="grid lg:grid-cols-5 gap-10 items-center">
+
+      <!-- LEFT: Headline & CTAs -->
+      <div class="lg:col-span-3 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-[0.22em] border border-brand-200/60 dark:border-brand-800/40 shadow-sm">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+          বিজ্ঞাপনমুক্ত · দাওয়াহ সংকলন
+        </div>
+
+        <h1 class="mt-7 font-latin font-black leading-[0.92] tracking-tight"
+            style="font-size: clamp(3rem, 8.5vw, 6.5rem);">
+          <span class="block text-slate-900 dark:text-white">Sunnah<span class="grad-text">way</span></span>
+        </h1>
+
+        <p class="mt-5 text-xl md:text-2xl font-semibold text-slate-700 dark:text-slate-100 tracking-tight">
+          কুরআন ও সুন্নাহর পথে
+        </p>
+
+        <p class="mt-6 text-base md:text-lg max-w-xl mx-auto lg:mx-0 text-slate-600 dark:text-slate-300 leading-relaxed">
+          কুরআন, হাদিস, নামাজের সময়সূচি, তাফসির, দোয়া, কুইজ ও ইসলামিক গল্প —
+          একজন মুসলিমের প্রতিদিনের দ্বীনি সঙ্গী। সম্পূর্ণ ফ্রি,
+          চিরকাল বিজ্ঞাপনমুক্ত।
+        </p>
+
+        <div class="mt-10 flex flex-wrap justify-center lg:justify-start gap-3">
+          <a href="sunnahway.apk" download
+             class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full btn-primary text-white font-bold text-base transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
+            APK ডাউনলোড করুন
+          </a>
+          <a href="#features" class="inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-slate-200 dark:border-white/10 hover:border-brand-300 dark:hover:border-brand-500/40 hover:bg-white dark:hover:bg-white/5 font-bold transition">
+            ফিচার দেখুন ↓
+          </a>
+        </div>
+
+        <!-- Badges row -->
+        <div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm text-slate-600 dark:text-slate-300">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full icon-tile flex items-center justify-center text-sm">🇧🇩</span>
+            <span>বাংলা · English · العربية</span>
+          </div>
+          <span class="hidden sm:inline w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full icon-tile flex items-center justify-center text-sm">🎓</span>
+            <span>৪ মাজহাব সাপোর্ট</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Mihrab card with Arabic verse -->
+      <div class="lg:col-span-2 flex justify-center">
+        <div class="relative w-full max-w-sm">
+          <!-- Mihrab (arch) -->
+          <div class="mihrab relative px-8 pt-10 pb-8 text-center">
+            <!-- Ornament top crescent -->
+            <svg class="mx-auto w-10 h-10 text-gold-500" viewBox="0 0 64 64" fill="currentColor">
+              <path d="M48 32c0 12-9 22-21 22a21 21 0 01-9-2c9-1 16-9 16-20s-7-19-16-20a21 21 0 019-2c12 0 21 10 21 22z"/>
+            </svg>
+            <div class="mt-6 text-[10px] uppercase tracking-[0.3em] font-bold text-brand-700 dark:text-brand-300">আয়াত · سورة الرعد</div>
+            <div class="mt-4 font-arabic text-3xl md:text-[2.25rem] leading-[2] text-slate-900 dark:text-white">
+              اَلَا بِذِكْرِ اللّٰهِ<br/>تَطْمَىٕنُّ الْقُلُوْبُ
+            </div>
+            <div class="mt-6 divider-orn">
+              <svg class="w-4 h-4 text-brand-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5L12 17l-6.5 4.5L8 14l-6-4.5h7.5z"/></svg>
+            </div>
+            <p class="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              "জেনে রাখো, আল্লাহর স্মরণেই হৃদয় প্রশান্ত হয়।"
+            </p>
+            <p class="mt-2 text-[11px] text-brand-700 dark:text-brand-400 font-semibold">সূরা আর-রা'দ · ২৮</p>
+          </div>
+          <!-- Floating "daily ayah" badge -->
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 text-white text-[11px] font-black tracking-widest uppercase shadow-lg">
+            আজকের আয়াত
+          </div>
+        </div>
+      </div>
+
     </div>
-    <h1 class="mt-8 font-latin font-black leading-[0.95] tracking-tight" style="font-size: clamp(3rem, 8vw, 6rem);">
-      <span class="block text-slate-900 dark:text-white">Sunnahway</span>
-    </h1>
-    <div class="mt-4 font-arabic text-3xl md:text-4xl grad-text tracking-wide">
-      الْقُرْآنُ وَالسُّنَّةُ
-    </div>
-    <p class="mt-3 text-xl md:text-2xl font-semibold text-slate-700 dark:text-slate-200">
-      কুরআন ও সুন্নাহর পথে
-    </p>
-    <p class="mt-6 text-base md:text-lg max-w-2xl mx-auto text-slate-600 dark:text-slate-300 leading-relaxed">
-      কুরআন, হাদিস, নামাজের সময়সূচি, তাফসির, দোয়া, কুইজ ও ইসলামিক গল্প —
-      একজন মুসলিমের প্রতিদিনের দ্বীনি প্রয়োজনের পূর্ণাঙ্গ সংকলন।
-    </p>
-    <div class="mt-10 flex flex-wrap justify-center gap-3">
-      <a href="sunnahway.apk" download class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-bold shadow-xl shadow-brand-500/30 transition">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
-        APK ডাউনলোড করুন
-      </a>
-      <a href="#features" class="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-slate-300 dark:border-white/10 hover:bg-white dark:hover:bg-white/5 font-bold transition">
-        ফিচার দেখুন ↓
-      </a>
-    </div>
-    <!-- Quick stats -->
-    <div class="mt-14 grid grid-cols-3 gap-4 max-w-xl mx-auto">
-      <div class="p-5 rounded-2xl glass">
-        <div class="text-3xl font-latin font-black grad-text">১৪+</div>
+
+    <!-- Stats strip -->
+    <div class="mt-16 md:mt-20 grid grid-cols-3 gap-3 md:gap-5 max-w-3xl mx-auto">
+      <div class="p-5 rounded-2xl glass text-center">
+        <div class="text-3xl md:text-4xl font-latin font-black grad-text">১৪+</div>
         <div class="mt-1 text-[11px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">ফিচার</div>
       </div>
-      <div class="p-5 rounded-2xl glass">
-        <div class="text-3xl font-latin font-black grad-text">৪</div>
+      <div class="p-5 rounded-2xl glass text-center">
+        <div class="text-3xl md:text-4xl font-latin font-black grad-text">৪</div>
         <div class="mt-1 text-[11px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">মাজহাব</div>
       </div>
-      <div class="p-5 rounded-2xl glass">
-        <div class="text-3xl font-latin font-black grad-text">৩</div>
-        <div class="mt-1 text-[11px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">ভাষা</div>
+      <div class="p-5 rounded-2xl glass text-center">
+        <div class="text-3xl md:text-4xl font-latin font-black grad-text">০</div>
+        <div class="mt-1 text-[11px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">বিজ্ঞাপন</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═════════════════ PURPOSE (উদ্দেশ্য) ═════════════════ -->
-<section id="purpose" class="max-w-6xl mx-auto px-5 py-16 md:py-24">
+<!-- ═════════════════ PURPOSE (আমাদের উদ্দেশ্য) ═════════════════ -->
+<section id="purpose" class="max-w-6xl mx-auto px-5 py-20 md:py-28">
   <div class="grid md:grid-cols-5 gap-10 items-start">
-    <div class="md:col-span-2">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-widest">
+    <div class="md:col-span-2 md:sticky md:top-24">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-[0.22em]">
         ✦ আমাদের উদ্দেশ্য
       </div>
-      <h2 class="mt-5 text-4xl md:text-5xl font-black tracking-tight">
+      <h2 class="mt-5 text-4xl md:text-5xl font-black tracking-tight leading-tight">
         কেন এই <span class="grad-text">অ্যাপ?</span>
       </h2>
       <p class="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed">
         কুরআন ও সুন্নাহর আলোকে একটি সহজ, বিশ্বস্ত ও বাংলা ভাষাভাষী মুসলিমদের
         জন্য উপযোগী দ্বীনি রিসোর্স তৈরি করা — এটাই সুন্নাহওয়ে-র মূল উদ্দেশ্য।
       </p>
+      <div class="mt-6 p-5 rounded-2xl ring-grad">
+        <div class="text-[11px] uppercase tracking-widest font-bold text-brand-700 dark:text-brand-300">আমাদের বিশ্বাস</div>
+        <p class="mt-2 text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
+          সঠিক জ্ঞান ও সহীহ আকিদাই মুসলিমদের দুনিয়া ও আখিরাতের সাফল্যের চাবিকাঠি।
+        </p>
+      </div>
     </div>
+
     <div class="md:col-span-3 grid sm:grid-cols-2 gap-5">
       <div class="p-6 rounded-2xl glass card-lift">
-        <div class="w-11 h-11 rounded-xl bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl">📖</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">📖</div>
         <h3 class="mt-4 font-black text-lg">দ্বীন শেখা সহজ করা</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           প্রতিটি মুসলিম যেন ঘরে বসেই কুরআন, হাদিস, তাফসির ও মাসআলা জানতে পারে।
         </p>
       </div>
       <div class="p-6 rounded-2xl glass card-lift">
-        <div class="w-11 h-11 rounded-xl bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl">🌿</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🌿</div>
         <h3 class="mt-4 font-black text-lg">প্রশান্তির উৎস</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           মানসিক অস্থিরতার যুগে কুরআন ও হাদিসের মাধ্যমে হৃদয়কে শান্ত করা।
         </p>
       </div>
       <div class="p-6 rounded-2xl glass card-lift">
-        <div class="w-11 h-11 rounded-xl bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl">✅</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">✅</div>
         <h3 class="mt-4 font-black text-lg">নির্ভরযোগ্য তথ্য</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           সহীহ বুখারী, মুসলিম সহ স্বীকৃত সূত্র। দুর্বল বর্ণনা এড়িয়ে চলা।
         </p>
       </div>
       <div class="p-6 rounded-2xl glass card-lift">
-        <div class="w-11 h-11 rounded-xl bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 flex items-center justify-center text-xl">💚</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">💚</div>
         <h3 class="mt-4 font-black text-lg">সবার জন্য ফ্রি</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           বিজ্ঞাপন নেই, চার্জ নেই, ট্র্যাকিং নেই — শুধুই দাওয়াহ।
@@ -213,9 +403,10 @@
 </section>
 
 <!-- ═════════════════ FEATURES (grouped) ═════════════════ -->
-<section id="features" class="max-w-6xl mx-auto px-5 py-16 md:py-24">
+<section id="features" class="relative max-w-6xl mx-auto px-5 py-20 md:py-28">
+
   <div class="max-w-2xl">
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-widest">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-[0.22em]">
       ✦ ফিচার
     </div>
     <h2 class="mt-5 text-4xl md:text-5xl font-black tracking-tight">
@@ -228,255 +419,244 @@
 
   <!-- GROUP 1: দৈনিক ইবাদত -->
   <div class="mt-16">
-    <h3 class="group-head text-xl md:text-2xl font-black">দৈনিক ইবাদত</h3>
-    <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-[14px]">নামাজ, কুরআন, দোয়া ও জিকির — প্রতিদিনের আমলের সঙ্গী।</p>
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <span class="font-latin font-black text-sm text-brand-600 dark:text-brand-300 tracking-[0.3em]">০১</span>
+        <h3 class="group-head text-2xl md:text-3xl font-black mt-2">দৈনিক ইবাদত</h3>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-4">নামাজ, কুরআন, দোয়া ও জিকির — প্রতিদিনের আমলের সঙ্গী।</p>
+      </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">🕌</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🕌</div>
         <h4 class="mt-4 font-black text-lg">নামাজের সময়সূচি</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          ৫ ওয়াক্ত নামাজ, সেহরি ও ইফতারের সঠিক সময়। লোকেশন ও মাজহাব অনুযায়ী।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">৫ ওয়াক্ত নামাজ, সেহরি-ইফতার। লোকেশন ও মাজহাব অনুযায়ী।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">📖</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">📖</div>
         <h4 class="mt-4 font-black text-lg">কুরআন + তাফসির</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          সম্পূর্ণ কুরআন, তাফসির ও <b>ওয়ার্ড বাই ওয়ার্ড</b> বাংলা অনুবাদ।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">সম্পূর্ণ কুরআন, তাফসির ও <b>ওয়ার্ড বাই ওয়ার্ড</b> বাংলা অনুবাদ।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">🤲</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🤲</div>
         <h4 class="mt-4 font-black text-lg">দোয়া ও জিকির</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          সকাল-সন্ধ্যার জিকির, কুরআনিক দোয়া, রুকইয়াহ ও তাওবাহর দোয়া।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">সকাল-সন্ধ্যার জিকির, কুরআনিক দোয়া, রুকইয়াহ ও তাওবাহ।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">📿</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">📿</div>
         <h4 class="mt-4 font-black text-lg">ডিজিটাল তাসবিহ</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          জিকির গণনার সহজ ডিজিটাল তাসবিহ। কাস্টম count ও হিস্টরি সহ।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">জিকির গণনার সহজ টুল। কাস্টম count ও হিস্টরি সহ।</p>
       </div>
-
     </div>
   </div>
 
   <!-- GROUP 2: জ্ঞান ও শেখা -->
-  <div class="mt-16">
-    <h3 class="group-head text-xl md:text-2xl font-black">জ্ঞান ও শেখা</h3>
-    <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-[14px]">হাদিস, আর্টিকেল, গল্প ও কুইজ — ইসলামের গভীরে যাওয়ার পথ।</p>
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
+  <div class="mt-20">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <span class="font-latin font-black text-sm text-brand-600 dark:text-brand-300 tracking-[0.3em]">০২</span>
+        <h3 class="group-head text-2xl md:text-3xl font-black mt-2">জ্ঞান ও শেখা</h3>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-4">হাদিস, আর্টিকেল, গল্প ও কুইজ — ইসলামের গভীরে যাওয়ার পথ।</p>
+      </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">📜</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">📜</div>
         <h4 class="mt-4 font-black text-lg">হাদিস</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          সহীহ বুখারী, মুসলিম, তিরমিজি, আবু দাউদ সহ নির্ভরযোগ্য সূত্র।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">সহীহ বুখারী, মুসলিম, তিরমিজি, আবু দাউদ সহ নির্ভরযোগ্য সূত্র।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">📚</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">📚</div>
         <h4 class="mt-4 font-black text-lg">ইসলামিক গল্প</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          নবী-রাসূলদের জীবনী, সাহাবাদের গল্প, খুলাফায়ে রাশেদীন।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">নবী-রাসূলদের জীবনী, সাহাবাদের গল্প, খুলাফায়ে রাশেদীন।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">📝</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">📝</div>
         <h4 class="mt-4 font-black text-lg">আর্টিকেল</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          আলেমগণের লেখা আর্টিকেল — ইসলামিক ক্যালেন্ডারের বিশেষ দিন ভিত্তিক।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">আলেমগণের লেখা — ইসলামিক ক্যালেন্ডারের বিশেষ দিন ভিত্তিক।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">❓</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">❓</div>
         <h4 class="mt-4 font-black text-lg">ইসলামিক কুইজ</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          ক্যাটাগরি অনুযায়ী কুইজ খেলে নিজের জ্ঞান যাচাই করুন।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">ক্যাটাগরি অনুযায়ী কুইজ খেলে নিজের জ্ঞান যাচাই করুন।</p>
       </div>
-
     </div>
   </div>
 
   <!-- GROUP 3: প্রশান্তি ও সহায়তা -->
-  <div class="mt-16">
-    <h3 class="group-head text-xl md:text-2xl font-black">প্রশান্তি ও সহায়তা</h3>
-    <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-[14px]">মনের অবস্থা অনুযায়ী কুরআন-হাদিসের আলো ও দ্বীনি পরামর্শ।</p>
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
+  <div class="mt-20">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <span class="font-latin font-black text-sm text-brand-600 dark:text-brand-300 tracking-[0.3em]">০৩</span>
+        <h3 class="group-head text-2xl md:text-3xl font-black mt-2">প্রশান্তি ও সহায়তা</h3>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-4">মনের অবস্থা অনুযায়ী কুরআন-হাদিসের আলো ও দ্বীনি পরামর্শ।</p>
+      </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">🫧</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🫧</div>
         <h4 class="mt-4 font-black text-lg">ইসলামিক জার</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          মুড ও মনের অবস্থা অনুযায়ী কুরআনের আয়াত ও হাদিস। প্রশান্তির সঙ্গী।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">মুড ও মনের অবস্থা অনুযায়ী কুরআনের আয়াত ও হাদিস।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">💬</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">💬</div>
         <h4 class="mt-4 font-black text-lg">প্রশ্ন করুন</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          মাসআলা জানার প্রয়োজন? অ্যাপ থেকেই সরাসরি প্রশ্ন করুন।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">মাসআলা জানার প্রয়োজন? অ্যাপ থেকেই সরাসরি প্রশ্ন করুন।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">🔖</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🔖</div>
         <h4 class="mt-4 font-black text-lg">বুকমার্ক</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          প্রিয় আয়াত, হাদিস, দোয়া বুকমার্ক করে রাখুন এক জায়গায়।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">প্রিয় আয়াত, হাদিস, দোয়া বুকমার্ক করে রাখুন।</p>
       </div>
-
     </div>
   </div>
 
   <!-- GROUP 4: টুলস ও সহায়ক -->
-  <div class="mt-16">
-    <h3 class="group-head text-xl md:text-2xl font-black">টুলস ও সহায়ক</h3>
-    <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-[14px]">আমল ট্র্যাকিং, কিবলা, মসজিদ ফাইন্ডার ও ক্যালেন্ডার।</p>
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
+  <div class="mt-20">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <span class="font-latin font-black text-sm text-brand-600 dark:text-brand-300 tracking-[0.3em]">০৪</span>
+        <h3 class="group-head text-2xl md:text-3xl font-black mt-2">টুলস ও সহায়ক</h3>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 pl-4">আমল ট্র্যাকিং, কিবলা, মসজিদ ফাইন্ডার ও ক্যালেন্ডার।</p>
+      </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">✅</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">✅</div>
         <h4 class="mt-4 font-black text-lg">আমল ট্র্যাকার</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          ৫ ওয়াক্ত নামাজ, কুরআন পড়া, জিকির — প্রতিদিনের আমল ট্র্যাক করুন।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">৫ ওয়াক্ত নামাজ, কুরআন পড়া, জিকির — প্রতিদিনের আমল ট্র্যাক।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">🧭</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🧭</div>
         <h4 class="mt-4 font-black text-lg">কিবলা ফাইন্ডার</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          সঠিক কিবলা দিক — যেখানেই থাকুন।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">সঠিক কিবলা দিক — যেখানেই থাকুন।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">🕋</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🕋</div>
         <h4 class="mt-4 font-black text-lg">মসজিদ ফাইন্ডার</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          আশেপাশের মসজিদ সহজে খুঁজে পেতে।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">আশেপাশের মসজিদ সহজে খুঁজে পেতে।</p>
       </div>
-
       <div class="card-lift p-6 rounded-2xl glass">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-2xl">📅</div>
+        <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">📅</div>
         <h4 class="mt-4 font-black text-lg">ইসলামিক ক্যালেন্ডার</h4>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          হিজরি ক্যালেন্ডার, বিশেষ রাত ও গুরুত্বপূর্ণ ইসলামী দিন।
-        </p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">হিজরি ক্যালেন্ডার, বিশেষ রাত ও গুরুত্বপূর্ণ ইসলামী দিন।</p>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- ═════════════════ MADHAB ═════════════════ -->
-<section id="madhab" class="max-w-6xl mx-auto px-5 py-16 md:py-24">
-  <div class="text-center max-w-2xl mx-auto">
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-widest">
-      🎓 মাজহাব
+<section id="madhab" class="relative overflow-hidden">
+  <div aria-hidden="true" class="absolute inset-0 pattern-geo opacity-50 pointer-events-none"
+       style="mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
+              -webkit-mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);"></div>
+
+  <div class="relative max-w-6xl mx-auto px-5 py-20 md:py-28">
+    <div class="text-center max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-[0.22em]">
+        🎓 মাজহাব
+      </div>
+      <h2 class="mt-5 text-4xl md:text-5xl font-black tracking-tight">
+        চার মাজহাব — <span class="grad-text">এক অ্যাপে</span>
+      </h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg">
+        আমরা <b>হানাফি মাজহাব</b>-এর অনুসারী। তবে অ্যাপে <b>৪ মাজহাব</b> অনুযায়ী
+        নামাজের সময়সূচি দেখার ব্যবস্থা রাখা হয়েছে।
+      </p>
     </div>
-    <h2 class="mt-5 text-4xl md:text-5xl font-black tracking-tight">
-      চার মাজহাব — <span class="grad-text">এক অ্যাপে</span>
-    </h2>
-    <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg">
-      আমরা <b>হানাফি মাজহাব</b>-এর অনুসারী। তবে অ্যাপে <b>৪ মাজহাব</b> অনুযায়ী
-      নামাজের সময়সূচি দেখার ব্যবস্থা রাখা হয়েছে।
-    </p>
-  </div>
-  <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-5">
-    <div class="card-lift p-6 rounded-2xl glass text-center">
-      <div class="w-14 h-14 mx-auto rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xl">১</div>
-      <h3 class="mt-4 font-black text-lg">হানাফি</h3>
-      <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Abu Hanifa (rh)</p>
-      <span class="mt-3 inline-block px-2.5 py-0.5 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 text-[10px] font-black tracking-widest">ডিফল্ট</span>
-    </div>
-    <div class="card-lift p-6 rounded-2xl glass text-center">
-      <div class="w-14 h-14 mx-auto rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xl">২</div>
-      <h3 class="mt-4 font-black text-lg">শাফেঈ</h3>
-      <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Shafi'i (rh)</p>
-    </div>
-    <div class="card-lift p-6 rounded-2xl glass text-center">
-      <div class="w-14 h-14 mx-auto rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xl">৩</div>
-      <h3 class="mt-4 font-black text-lg">মালিকি</h3>
-      <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Malik (rh)</p>
-    </div>
-    <div class="card-lift p-6 rounded-2xl glass text-center">
-      <div class="w-14 h-14 mx-auto rounded-full bg-brand-600 text-white flex items-center justify-center font-black text-xl">৪</div>
-      <h3 class="mt-4 font-black text-lg">হাম্বলি</h3>
-      <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Ahmad (rh)</p>
+    <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div class="card-lift p-7 rounded-2xl ring-grad text-center">
+        <div class="w-16 h-16 mx-auto rounded-full num-badge flex items-center justify-center font-black text-2xl font-latin">১</div>
+        <h3 class="mt-5 font-black text-xl">হানাফি</h3>
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Abu Hanifa (rh)</p>
+        <span class="mt-4 inline-block px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 text-[10px] font-black tracking-widest">ডিফল্ট</span>
+      </div>
+      <div class="card-lift p-7 rounded-2xl glass text-center">
+        <div class="w-16 h-16 mx-auto rounded-full num-badge flex items-center justify-center font-black text-2xl font-latin">২</div>
+        <h3 class="mt-5 font-black text-xl">শাফেঈ</h3>
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Shafi'i (rh)</p>
+      </div>
+      <div class="card-lift p-7 rounded-2xl glass text-center">
+        <div class="w-16 h-16 mx-auto rounded-full num-badge flex items-center justify-center font-black text-2xl font-latin">৩</div>
+        <h3 class="mt-5 font-black text-xl">মালিকি</h3>
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Malik (rh)</p>
+      </div>
+      <div class="card-lift p-7 rounded-2xl glass text-center">
+        <div class="w-16 h-16 mx-auto rounded-full num-badge flex items-center justify-center font-black text-2xl font-latin">৪</div>
+        <h3 class="mt-5 font-black text-xl">হাম্বলি</h3>
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Imam Ahmad (rh)</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═════════════════ PROMISE ═════════════════ -->
-<section class="max-w-6xl mx-auto px-5 py-16 md:py-24">
-  <div class="p-10 md:p-14 rounded-3xl bg-gradient-to-br from-brand-700 via-brand-800 to-emerald-950 text-white">
-    <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-gold-300 text-xs font-bold uppercase tracking-widest">
-        💚 অঙ্গীকার
+<section class="max-w-6xl mx-auto px-5 py-20 md:py-28">
+  <div class="relative overflow-hidden rounded-[32px] p-10 md:p-14 text-white bg-gradient-to-br from-brand-700 via-brand-800 to-emerald-950">
+    <div aria-hidden="true" class="absolute inset-0 pattern-geo opacity-40 pointer-events-none"
+         style="mask-image: radial-gradient(ellipse at top right, black, transparent 70%);
+                -webkit-mask-image: radial-gradient(ellipse at top right, black, transparent 70%);
+                mix-blend-mode: screen;"></div>
+    <div class="relative">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-gold-300 text-xs font-bold uppercase tracking-[0.22em]">
+          💚 আমাদের অঙ্গীকার
+        </div>
+        <h2 class="mt-5 text-3xl md:text-5xl font-black leading-tight">
+          দাওয়াহ সংকলন — <span class="grad-gold">বিজ্ঞাপনমুক্ত চিরকাল</span>
+        </h2>
+        <p class="mt-5 text-lg text-white/80 leading-relaxed">
+          এটি কোনো বাণিজ্যিক প্রোডাক্ট না — একটি দ্বীনি সংকলন।
+          আপনার ব্যক্তিগত তথ্য কখনো বিক্রি হবে না, কোনো বিজ্ঞাপন থাকবে না।
+        </p>
       </div>
-      <h2 class="mt-5 text-3xl md:text-5xl font-black leading-tight">
-        দাওয়াহ সংকলন — <span class="text-gold-300">বিজ্ঞাপনমুক্ত চিরকাল</span>
-      </h2>
-      <p class="mt-5 text-lg text-white/80 leading-relaxed">
-        এটি কোনো বাণিজ্যিক প্রোডাক্ট না — একটি দ্বীনি সংকলন।
-        আপনার ব্যক্তিগত তথ্য কখনো বিক্রি হবে না, কোনো বিজ্ঞাপন থাকবে না।
-      </p>
-    </div>
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-2xl">🆓</div>
-        <div class="mt-2 font-black">১০০% ফ্রি</div>
-        <div class="mt-1 text-xs text-white/60">কোনো in-app purchase নেই</div>
-      </div>
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-2xl">🚫</div>
-        <div class="mt-2 font-black">বিজ্ঞাপনমুক্ত</div>
-        <div class="mt-1 text-xs text-white/60">কোনো ad দেখানো হয় না</div>
-      </div>
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-2xl">🔒</div>
-        <div class="mt-2 font-black">Privacy first</div>
-        <div class="mt-1 text-xs text-white/60">ডেটা বিক্রি হয় না</div>
-      </div>
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <div class="text-2xl">🔁</div>
-        <div class="mt-2 font-black">নিয়মিত আপডেট</div>
-        <div class="mt-1 text-xs text-white/60">ব্যবহারকারীর মতামত অনুযায়ী</div>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+          <div class="text-2xl">🆓</div>
+          <div class="mt-2 font-black">১০০% ফ্রি</div>
+          <div class="mt-1 text-xs text-white/60">কোনো in-app purchase নেই</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+          <div class="text-2xl">🚫</div>
+          <div class="mt-2 font-black">বিজ্ঞাপনমুক্ত</div>
+          <div class="mt-1 text-xs text-white/60">কোনো ad দেখানো হয় না</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+          <div class="text-2xl">🔒</div>
+          <div class="mt-2 font-black">Privacy first</div>
+          <div class="mt-1 text-xs text-white/60">ডেটা বিক্রি হয় না</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+          <div class="text-2xl">🔁</div>
+          <div class="mt-2 font-black">নিয়মিত আপডেট</div>
+          <div class="mt-1 text-xs text-white/60">ব্যবহারকারীর মতামত অনুযায়ী</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═════════════════ DOWNLOAD ═════════════════ -->
-<section id="download" class="max-w-5xl mx-auto px-5 py-16 md:py-24">
-  <div class="p-10 md:p-14 rounded-3xl text-center bg-white dark:bg-[#0E1A14] border border-slate-200 dark:border-white/10">
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-widest">
+<section id="download" class="relative overflow-hidden">
+  <div aria-hidden="true" class="absolute inset-0 pattern-geo opacity-60 pointer-events-none"
+       style="mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+              -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 75%);"></div>
+
+  <div class="relative max-w-4xl mx-auto px-5 py-20 md:py-28 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-[0.22em]">
       📲 Android APK
     </div>
-    <h2 class="mt-6 text-3xl md:text-5xl font-black leading-tight">
-      আজই শুরু করুন আপনার <span class="grad-text">দ্বীনি সফর</span>
+    <h2 class="mt-6 text-4xl md:text-6xl font-black leading-tight">
+      আজই শুরু করুন আপনার<br/>
+      <span class="grad-text">দ্বীনি সফর</span>
     </h2>
-    <p class="mt-5 text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+    <p class="mt-6 text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed text-lg">
       APK ডাউনলোড করুন। কোনো sign-up নেই, কোনো খরচ নেই, কোনো বিজ্ঞাপন নেই।
     </p>
-    <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <a href="sunnahway.apk" download class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-bold shadow-xl shadow-brand-500/30 hover:scale-[1.02] transition">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <a href="sunnahway.apk" download
+         class="inline-flex items-center gap-3 px-10 py-5 rounded-full btn-primary text-white font-black text-lg transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
         APK ডাউনলোড করুন
       </a>
     </div>
@@ -488,7 +668,7 @@
 
 <!-- ═════════════════ FOOTER ═════════════════ -->
 <footer class="border-t border-slate-200/70 dark:border-white/5">
-  <div class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-4 gap-10">
+  <div class="max-w-7xl mx-auto px-5 py-14 grid md:grid-cols-4 gap-10">
     <div class="md:col-span-2">
       <div class="flex items-center gap-3">
         <img src="logo.png" class="w-10 h-10 rounded-xl" />
