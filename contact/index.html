@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>যোগাযোগ · Sunnahway</title>
+<meta name="description" content="সুন্নাহওয়ে-র সাথে যোগাযোগ — মতামত, পরামর্শ, দ্বীনি প্রশ্ন।" />
+<link rel="icon" href="/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet" />
+<script src="/assets/head.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="bg-[#F7FBF8] text-slate-800 dark:bg-[#0A130E] dark:text-slate-100">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 backdrop-blur-lg bg-white/85 dark:bg-[#0A130E]/85 border-b border-slate-200/70 dark:border-white/5">
+  <nav class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3"><img src="/logo.png" alt="Sunnahway" class="w-10 h-10 rounded-xl" /><div class="leading-tight"><div class="font-latin font-black text-xl tracking-wide text-brand-800 dark:text-brand-300">Sunnahway</div><div class="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">দ্বীনি সংকলন</div></div></a>
+    <div class="hidden md:flex items-center gap-7 text-sm font-semibold">
+      <a href="/"         class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">হোম</a>
+      <a href="/about"    class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">আমাদের সম্পর্কে</a>
+      <a href="/history"  class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">ইসলামের ইতিহাস</a>
+      <a href="/blog"     class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-300">ব্লগ</a>
+      <a href="/contact"  class="text-brand-700 dark:text-brand-300">যোগাযোগ</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="themeBtn" class="w-10 h-10 rounded-full border border-slate-200 dark:border-white/10 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/5 transition" aria-label="Toggle theme"><svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg><svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <a href="/sunnahway.apk" download class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-primary text-white text-sm font-bold transition"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>ডাউনলোড</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div aria-hidden="true" class="absolute inset-0 pattern-geo opacity-70 pointer-events-none" style="mask-image: radial-gradient(ellipse at center, black 0%, black 45%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, black 0%, black 45%, transparent 75%);"></div>
+  <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-brand-50/60 via-transparent to-transparent dark:from-brand-950/40"></div>
+  <div class="relative max-w-4xl mx-auto px-5 pt-20 pb-14 md:pt-28 md:pb-20 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-[0.22em] border border-brand-200/60 dark:border-brand-800/40 shadow-sm">✉️ যোগাযোগ</div>
+    <h1 class="mt-6 font-latin font-black leading-[0.95] tracking-tight text-4xl md:text-6xl"><span class="text-slate-900 dark:text-white">আপনার</span> <span class="grad-text">কথা শুনতে চাই</span></h1>
+    <p class="mt-5 text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">মতামত, পরামর্শ, ত্রুটি রিপোর্ট বা দ্বীনি প্রশ্ন — যেকোনো কিছু নিয়ে আমাদের সাথে যোগাযোগ করুন।</p>
+  </div>
+</section>
+
+<!-- CONTACT METHODS -->
+<section class="max-w-6xl mx-auto px-5 py-16 md:py-24">
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="p-7 rounded-2xl glass card-lift">
+      <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">💬</div>
+      <h3 class="mt-5 font-black text-lg">অ্যাপ থেকে প্রশ্ন</h3>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">অ্যাপের "প্রশ্ন করুন" সেকশন থেকে সরাসরি আমাদের কাছে আপনার দ্বীনি প্রশ্ন পাঠান।</p>
+      <a href="/sunnahway.apk" download class="mt-4 inline-flex items-center gap-1.5 text-brand-600 dark:text-brand-300 text-sm font-bold hover:underline">অ্যাপ ডাউনলোড করুন →</a>
+    </div>
+    <div class="p-7 rounded-2xl glass card-lift">
+      <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">🐛</div>
+      <h3 class="mt-5 font-black text-lg">বাগ রিপোর্ট</h3>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">অ্যাপে কোনো সমস্যা পেলে — Settings → ডেভেলপার ইনফো থেকে সরাসরি রিপোর্ট করুন।</p>
+    </div>
+    <div class="p-7 rounded-2xl glass card-lift">
+      <div class="w-12 h-12 rounded-xl icon-tile flex items-center justify-center text-2xl">💡</div>
+      <h3 class="mt-5 font-black text-lg">ফিচার সাজেশন</h3>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">নতুন কোনো ফিচার যোগ করার সাজেশন থাকলে জানান — ব্যবহারকারীর মতামতই অ্যাপকে উন্নত করে।</p>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE FORM (visual only for now) -->
+<section class="max-w-3xl mx-auto px-5 py-16 md:py-24">
+  <div class="p-8 md:p-12 rounded-3xl ring-grad">
+    <span class="font-latin font-black text-sm text-brand-600 dark:text-brand-300 tracking-[0.3em]">MESSAGE</span>
+    <h2 class="group-head text-3xl md:text-4xl font-black mt-2">আমাদের লিখুন</h2>
+    <p class="mt-3 text-slate-600 dark:text-slate-300">আপনার মতামত বা পরামর্শ পাঠান। ইনশাআল্লাহ আমরা উত্তর দেয়ার চেষ্টা করব।</p>
+
+    <form class="mt-8 space-y-4" onsubmit="event.preventDefault(); this.querySelector('.form-msg').textContent='ধন্যবাদ! শীঘ্রই সরাসরি যোগাযোগ ফর্ম চালু হবে — আপাতত অ্যাপের \"প্রশ্ন করুন\" অপশন ব্যবহার করুন।'; return false;">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input type="text" placeholder="আপনার নাম" class="w-full px-4 py-3.5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition" required />
+        <input type="email" placeholder="ইমেইল" class="w-full px-4 py-3.5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition" required />
+      </div>
+      <input type="text" placeholder="বিষয়" class="w-full px-4 py-3.5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition" />
+      <textarea rows="5" placeholder="আপনার বার্তা এখানে লিখুন..." class="w-full px-4 py-3.5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition resize-none" required></textarea>
+      <button type="submit" class="w-full sm:w-auto inline-flex items-center gap-2 px-8 py-3.5 rounded-full btn-primary text-white font-bold transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        বার্তা পাঠান
+      </button>
+      <p class="form-msg text-sm text-brand-700 dark:text-brand-300 font-semibold"></p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-slate-200/70 dark:border-white/5">
+  <div class="max-w-7xl mx-auto px-5 py-12 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3"><img src="/logo.png" class="w-10 h-10 rounded-xl" /><div><div class="font-latin font-black text-brand-800 dark:text-brand-300">Sunnahway</div><div class="text-xs text-slate-500 dark:text-slate-400">কুরআন ও সুন্নাহর পথে</div></div></div>
+    <div class="text-xs text-slate-500 dark:text-slate-400">© <span id="year"></span> Sunnahway Team · সকল অধিকার সংরক্ষিত</div>
+  </div>
+</footer>
+
+</body>
+</html>

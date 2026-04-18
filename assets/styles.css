@@ -1,0 +1,156 @@
+/* ═════════════ Sunnahway shared styles ═════════════ */
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Hind Siliguri','Inter',sans-serif; }
+
+.pattern-geo {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23039855' stroke-width='0.6' opacity='0.12'><path d='M40 0L50 30H80L55 50L65 80L40 60L15 80L25 50L0 30H30Z'/><circle cx='40' cy='40' r='10'/></g></svg>");
+  background-size: 80px 80px;
+}
+.dark .pattern-geo {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%2332D583' stroke-width='0.6' opacity='0.18'><path d='M40 0L50 30H80L55 50L65 80L40 60L15 80L25 50L0 30H30Z'/><circle cx='40' cy='40' r='10'/></g></svg>");
+}
+
+.grad-text {
+  background: linear-gradient(135deg,#039855 0%,#12B76A 40%,#F59E0B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dark .grad-text {
+  background: linear-gradient(135deg,#6CE9A6 0%,#32D583 40%,#FCD34D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.grad-gold {
+  background: linear-gradient(135deg,#FCD34D 0%,#F59E0B 60%,#B45309 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226,232,240,0.7);
+}
+.dark .glass {
+  background: rgba(14,26,20,0.65);
+  border-color: rgba(108,233,166,0.10);
+}
+
+.card-lift {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1),
+              box-shadow .35s,
+              border-color .35s;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px -18px rgba(3,152,85,0.28);
+  border-color: rgba(18,183,106,0.35);
+}
+
+.ring-grad {
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(135deg,#12B76A,#F59E0B) border-box;
+  border: 1.5px solid transparent;
+}
+.dark .ring-grad {
+  background:
+    linear-gradient(#0E1A14,#0E1A14) padding-box,
+    linear-gradient(135deg,#32D583,#FCD34D) border-box;
+}
+
+.group-head {
+  position: relative;
+  padding-left: 16px;
+}
+.group-head::before {
+  content:'';
+  position: absolute;
+  left: 0; top: 6px; bottom: 6px;
+  width: 5px;
+  border-radius: 4px;
+  background: linear-gradient(180deg,#12B76A,#054F31);
+}
+
+.mihrab {
+  position: relative;
+  border-radius: 160px 160px 28px 28px;
+  background:
+    radial-gradient(ellipse at top, rgba(252,211,77,0.18), transparent 60%),
+    linear-gradient(180deg, #ECFDF4 0%, #FFFFFF 100%);
+  border: 1px solid rgba(3,152,85,0.18);
+  box-shadow:
+    0 30px 60px -24px rgba(3,152,85,0.25),
+    inset 0 0 0 1px rgba(245,158,11,0.1);
+}
+.dark .mihrab {
+  background:
+    radial-gradient(ellipse at top, rgba(252,211,77,0.15), transparent 60%),
+    linear-gradient(180deg, #0E1A14 0%, #061009 100%);
+  border-color: rgba(108,233,166,0.2);
+  box-shadow:
+    0 30px 60px -24px rgba(3,152,85,0.35),
+    inset 0 0 0 1px rgba(245,158,11,0.08);
+}
+.mihrab::before {
+  content:'';
+  position: absolute;
+  inset: 8px;
+  border-radius: 152px 152px 22px 22px;
+  border: 1px dashed rgba(3,152,85,0.2);
+  pointer-events: none;
+}
+.dark .mihrab::before { border-color: rgba(108,233,166,0.2); }
+
+.divider-orn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.divider-orn::before, .divider-orn::after {
+  content:''; flex:1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(3,152,85,.4), transparent);
+}
+.dark .divider-orn::before, .dark .divider-orn::after {
+  background: linear-gradient(90deg, transparent, rgba(108,233,166,.35), transparent);
+}
+
+.num-badge {
+  background: linear-gradient(180deg,#12B76A 0%,#054F31 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.3),
+    inset 0 -6px 10px rgba(0,0,0,.2),
+    0 10px 20px -8px rgba(3,152,85,.45);
+  color:#fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+
+.icon-tile {
+  background: linear-gradient(135deg, #D1FADF, #A6F4C5);
+  border: 1px solid rgba(18,183,106,0.18);
+}
+.dark .icon-tile {
+  background: linear-gradient(135deg, rgba(50,213,131,0.15), rgba(5,96,58,0.35));
+  border-color: rgba(108,233,166,0.25);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg,#12B76A 0%,#027A48 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.3),
+    0 14px 30px -10px rgba(3,152,85,.5);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg,#16C673 0%,#039855 100%);
+}
+
+/* Timeline */
+.timeline-line {
+  background: linear-gradient(180deg, #12B76A, #F59E0B);
+}
